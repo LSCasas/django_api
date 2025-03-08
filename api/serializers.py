@@ -10,14 +10,14 @@ class OwnerModelSerializer(serializers.ModelSerializer):
         model = models.Owner  
         fields = ("__str__", "id", "first_name", "last_name", "email", "phone", "mobile")
 
-class SpeciesModelSerializer(serializers.ModelSerializer):  # Corregido el nombre de la clase
+class SpeciesModelSerializer(serializers.ModelSerializer): 
     """Species model serializer"""
 
     class Meta:
         model = models.Species 
         fields = ("id", "name")
 
-class PetModelSerializer(serializers.ModelSerializer):  # Corregido "serializers.ModelSerializers" a "serializers.ModelSerializer"
+class PetModelSerializer(serializers.ModelSerializer): 
     """Pet model serializer"""
     
     class Meta:
@@ -25,7 +25,7 @@ class PetModelSerializer(serializers.ModelSerializer):  # Corregido "serializers
         fields = ("id", "name", "owner", "age", "species", "created_at")
         read_only_fields = ("created_at")
 
-class RecordModelSerializer(serializers.ModelSerializer):  # Corregido "serializers.ModelSerialiezer" a "serializers.ModelSerializer"
+class RecordModelSerializer(serializers.ModelSerializer):
     """Record model serializer"""
     
     class Meta:

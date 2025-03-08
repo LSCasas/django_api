@@ -17,33 +17,24 @@ class Species(models.Model):
 
 class Pet(models.Model):
     """Pet object"""
-    
 
-    class Species(models.IntegerChoices):
-        OTHERS = 0
-        CAT = 1
-        DOG = 2
-        BIRD = 3
-
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=255)
     owner = models.ForeignKey(Owner, related_name="pets", on_delete=models.CASCADE)
     age = models.IntegerField()
-    spacies = models.CharField(Species, on_delete=models.PROTECT)
-    record = models.ForeignKey('Record', related_name='pets', on_delete=models.CASCADE)
+    species = models.ForeignKey(to=Species, on_delete=models.PROTECT)
     created_at = models.DateField(auto_now_add=True)
 
-pet = Pet(species=Pet.Species.DOG)
 
-class Record(modes.Model):
+class Record(models.Model):
     """Medical Record object"""
     class Category(models.IntegerChoices):
         """Medical record category"""
-        OTHER = 1
-        BLOOD_PRESSURE = 2
-        BLOOD_SUGGAR = 3
-        BLOOD_GLUCOSE = 4
-        BLOOD_OXYGEN = 5
-        VACCINATION = 6
+        OTHER = 0
+        BLOOD_PRESSURE = 1
+        BLOOD_SUGGAR = 2
+        BLOOD_GLUCOSE = 3
+        BLOOD_OXYGEN = 4
+        VACCINATION = 5
 
     category = models.IntegerField(choices=Category.choices)
     procedure = models.CharField(max_length=255)

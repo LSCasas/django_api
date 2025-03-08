@@ -1,34 +1,28 @@
 """REST API viewsets"""
 
 from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework.decorators import action
+from . import models, serializers  
 
-class UserViewSet(viewsets.ViewSet):
-    @action(detail=false)
-    def auth(setf, request):
-        """Logica de autentificacion"""
-        return Response({"token": token})
-    
-    @action(detail=False)
-    def create(self, request):
-        """Se genera un nuevo usuario"""
-        return 
-
-class OwnerViewSet(viewsets.MdeolViewSet):
-    """Owner viewset"""
+class OwnerViewSet(viewsets.ModelViewSet):
+    """Owner objetct"""
 
     queryset = models.Owner.objects.all()
-    seializer_class = seializers.OwnerModelSerializer
+    serializer_class = serializers.OwnerModelSerializer 
 
-class SpeciesViewSet(viewsets.Model):
+class SpeciesViewSet(viewsets.ModelViewSet):  
     """Species viewset"""
 
     queryset = models.Species.objects.all()
-    serializer_class = serializer.SpeciesModelSerializer
+    serializer_class = serializers.SpeciesModelSerializer  
 
 class PetViewSet(viewsets.ModelViewSet):
     """Record viewset"""
 
-    query = models.Record.objects.all()
+    queryset = models.Record.objects.all()
     serializer_class = serializers.RecordModelSerializer
+
+class RecordViewSet(viewsets.ModelViewSet):
+    """Record viewset"""
+
+    queryset = models.Record.objects.all()
+    serializers_class = serializers.RecordModelSerializer
